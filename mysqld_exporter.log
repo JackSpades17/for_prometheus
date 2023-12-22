@@ -1,0 +1,20 @@
+user@node1:~$ head -50 /var/log/mysqld_exporter.log 
+time="2023-12-22T12:54:31Z" level=info msg="Starting mysqld_exporter (version=0.11.0, branch=HEAD, revision=5d7179615695a61ecc3b5bf90a2a7c76a9592cdd)" source="mysqld_exporter.go:206"
+time="2023-12-22T12:54:31Z" level=info msg="Build context (go=go1.10.3, user=root@3d3ff666b0e4, date=20180629-15:00:35)" source="mysqld_exporter.go:207"
+time="2023-12-22T12:54:31Z" level=info msg="Enabled scrapers:" source="mysqld_exporter.go:218"
+time="2023-12-22T12:54:31Z" level=info msg=" --collect.slave_status" source="mysqld_exporter.go:222"
+time="2023-12-22T12:54:31Z" level=info msg=" --collect.info_schema.tables" source="mysqld_exporter.go:222"
+time="2023-12-22T12:54:31Z" level=info msg=" --collect.global_status" source="mysqld_exporter.go:222"
+time="2023-12-22T12:54:31Z" level=info msg=" --collect.global_variables" source="mysqld_exporter.go:222"
+time="2023-12-22T12:54:31Z" level=info msg="Listening on :9111" source="mysqld_exporter.go:232"
+
+user@node1:~$ sudo systemctl status mysqld_exporter.service 
+● mysqld_exporter.service - Mysql Exporter
+     Loaded: loaded (/etc/systemd/system/mysqld_exporter.service; disabled; vendor preset: enabled)
+     Active: active (running) since Fri 2023-12-22 12:54:31 UTC; 18min ago
+   Main PID: 23062 (mysqld_exporter)
+      Tasks: 5 (limit: 2344)
+     Memory: 14.3M
+     CGroup: /system.slice/mysqld_exporter.service
+             └─23062 /opt/mysqld_exporter/mysqld_exporter --config.my-cnf /etc/my.cnf --web.listen-address=:9111
+
